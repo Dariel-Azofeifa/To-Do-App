@@ -25,13 +25,13 @@ background-color: #cdf7f6;
     background-color: #9a94bc;
     width: clamp(150px, 15%, 250px);
     height: 100vh;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 0 15px 15px 0;
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
 }
 
 .name {
@@ -65,10 +65,12 @@ background-color: #cdf7f6;
     font-size: clamp(14px, 1.5vw, 20px);
     background-color: #8fb8de;
     display: block;
+    transition: opacity 0.2s ease;
 }
 
-.middle-part a:hover {
-    background-color: #7aa8d0;
+.middle-part a:hover,
+.new-list a:hover {
+    opacity: 0.85;
 }
 
 .new-list {
@@ -79,27 +81,22 @@ background-color: #cdf7f6;
 }
 
 .new-list a {
-    background-color: #aa48a0;
+    background-color: #9b5094;
 }
 
-.new-list a:hover {
-    background-color: #a7399c;
-}
-
-
-/* TOP-BAR - fijo arriba, respetando el ancho del sidebar */
+/* TOP-BAR */
 .top-bar {
     background-color: #9a94bc;
     height: 60px;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 0 0 15px 15px;
     display: flex;
     align-items: center;
     padding: 0 20px;
     position: fixed;
     top: 0;
-    left: clamp(150px, 15%, 250px); /* coincide exactamente con el sidebar */
+    left: clamp(150px, 15%, 250px);
     right: 0;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
 }
 
 .nav {
@@ -122,10 +119,10 @@ background-color: #cdf7f6;
     background-color: #7aa8d0;
 }
 
-/* MAIN - ocupa todo el espacio restante */
+/* MAIN */
 .Main {
-    margin-left: clamp(150px, 15%, 250px); /* coincide con el sidebar */
-    margin-top: 60px; /* coincide con el top-bar */
+    margin-left: clamp(150px, 15%, 250px);
+    margin-top: 60px;
     padding: 30px;
     width: calc(100% - clamp(150px, 15%, 250px));
     min-height: calc(100vh - 60px);
@@ -172,4 +169,138 @@ background-color: #cdf7f6;
 .Main input[type="checkbox"]:checked + label::before {
     background-color: #9b5094;
     border-color: #9b5094;
+}
+
+/* ================================
+   MODAL - NUEVA TAREA
+================================ */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal {
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 30px;
+    width: clamp(280px, 40%, 480px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: translateY(-20px);
+    transition: transform 0.2s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.modal h2 {
+    font-size: clamp(18px, 2vw, 24px);
+    color: #333;
+}
+
+.modal input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #9a94bc;
+    border-radius: 12px;
+    font-size: clamp(14px, 1.3vw, 18px);
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.modal input[type="text"]:focus {
+    border-color: #9b5094;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-buttons button {
+    padding: 8px 20px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    font-size: clamp(13px, 1.2vw, 16px);
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+}
+
+.modal-buttons button:hover {
+    opacity: 0.8;
+}
+
+.btn-cancel {
+    background-color: #f5f4fa;
+}
+
+.btn-add {
+    background-color: #9b5094;
+    color: #fff;
+}
+
+/* ================================
+   MODAL - CONFIG TASK
+================================ */
+.config-modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.config-option {
+    padding: 12px 15px;
+    border: 2px solid #9a94bc;
+    border-radius: 12px;
+    background-color: #f5f4fa;
+    cursor: pointer;
+    font-size: clamp(14px, 1.3vw, 16px);
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+}
+
+.config-option:hover {
+    background-color: #e8e6f0;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category-option {
+    padding: 12px 15px;
+    border: 2px solid #8fb8de;
+    border-radius: 12px;
+    background-color: #8fb8de;
+    cursor: pointer;
+    font-size: clamp(14px, 1.3vw, 16px);
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+    text-align: left;
+}
+
+.category-option:hover {
+    opacity: 0.8;
 }
