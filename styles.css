@@ -9,6 +9,7 @@ body {
 font-family: 'Excalifont', sans-serif;
 background-color: #cdf7f6;
 }
+
 /* Reseteo base */
 * {
     margin: 0;
@@ -20,7 +21,7 @@ background-color: #cdf7f6;
     display: flex;
 }
 
-/* SIDEBAR - fijo a la izquierda */
+/* SIDEBAR */
 .left-bar {
     background-color: #9a94bc;
     width: clamp(150px, 15%, 250px);
@@ -43,9 +44,14 @@ background-color: #cdf7f6;
 .name a {
     text-decoration: none;
     color: inherit;
-    font-size: clamp(18px, 2vw, 25px);
+    font-size: clamp(14px, 1.5vw, 20px);
     margin-bottom: 30px;
     margin-top: 20px;
+    cursor: pointer;
+}
+
+.name a:hover {
+    opacity: 0.8;
 }
 
 .middle-part {
@@ -172,7 +178,7 @@ background-color: #cdf7f6;
 }
 
 /* ================================
-   MODAL - NUEVA TAREA
+   MODALES
 ================================ */
 .modal-overlay {
     position: fixed;
@@ -200,7 +206,7 @@ background-color: #cdf7f6;
     width: clamp(280px, 40%, 480px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     transform: translateY(-20px);
     transition: transform 0.2s ease;
 }
@@ -229,6 +235,13 @@ background-color: #cdf7f6;
     border-color: #9b5094;
 }
 
+.modal-field-error {
+    font-size: 12px;
+    color: #e74c3c;
+    min-height: 16px;
+    margin-top: -8px;
+}
+
 .modal-buttons {
     display: flex;
     gap: 10px;
@@ -245,8 +258,13 @@ background-color: #cdf7f6;
     font-family: inherit;
 }
 
-.modal-buttons button:hover {
+.modal-buttons button:hover:not(:disabled) {
     opacity: 0.8;
+}
+
+.modal-buttons button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .btn-cancel {
@@ -258,9 +276,6 @@ background-color: #cdf7f6;
     color: #fff;
 }
 
-/* ================================
-   MODAL - CONFIG TASK
-================================ */
 .config-modal-options {
     display: flex;
     flex-direction: column;
@@ -301,6 +316,39 @@ background-color: #cdf7f6;
     text-align: left;
 }
 
-.category-option:hover {
+.category-option:hover:not(:disabled) {
     opacity: 0.8;
+}
+
+/* ================================
+   TOAST - NOTIFICACIONES
+================================ */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    font-size: 14px;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    max-width: 320px;
+}
+
+.toast.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.error {
+    background-color: #fde8e8;
+    color: #c0392b;
+}
+
+.toast.success {
+    background-color: #e8f8e8;
+    color: #1e8449;
 }

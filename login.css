@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f4fa;
+    font-family: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+}
+
+/* TABS */
+.auth-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    background-color: #f5f4fa;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+    font-family: inherit;
+}
+
+.tab.active {
+    background-color: #9a94bc;
+    color: #fff;
+}
+
+.tab:hover:not(.active) {
+    background-color: #e8e6f0;
+}
+
+/* MENSAJE */
+.auth-message {
+    display: none;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.auth-message.error {
+    display: block;
+    background-color: #fde8e8;
+    border: 2px solid #e74c3c;
+    color: #c0392b;
+}
+
+.auth-message.success {
+    display: block;
+    background-color: #e8f8e8;
+    border: 2px solid #27ae60;
+    color: #1e8449;
+}
+
+/* FORMS */
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+
+.input-group input {
+    padding: 12px 15px;
+    border: 2px solid #9a94bc;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+
+.input-group input:focus {
+    border-color: #9b5094;
+}
+
+.input-group input.invalid {
+    border-color: #e74c3c;
+}
+
+.field-error {
+    font-size: 12px;
+    color: #e74c3c;
+    min-height: 16px;
+}
+
+.btn-primary {
+    padding: 12px;
+    background-color: #9b5094;
+    color: #fff;
+    border: 2px solid #000;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    font-family: inherit;
+    margin-top: 5px;
+}
+
+.btn-primary:hover {
+    opacity: 0.85;
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
